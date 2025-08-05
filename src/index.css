@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('./assets/fonts/Ubuntu-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('./assets/fonts/Ubuntu-Medium.ttf');
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('./assets/fonts/Ubuntu-Bold.ttf');
+    font-weight: 700;
+}
+
+body {
+  background-color: #eef2f9;
+  font-family: 'Ubuntu', sans-serif;
+}
+
