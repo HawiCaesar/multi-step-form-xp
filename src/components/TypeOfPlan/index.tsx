@@ -39,7 +39,7 @@ export const TypeOfPlan = () => {
           selectedPlan === plan.id
             ? 'border-2 border-[#483eff] bg-[#f7f9ff]'
             : 'border-[#e4e3e9]'
-        }`}
+        } cursor-pointer`}
         key={plan.id}
         onClick={(e) => {
           e.preventDefault();

@@ -1,92 +1,71 @@
 import { useState } from 'react';
 
-import { PersonalInfo } from "./components/PersonalInfo";
-import { TypeOfPlan } from "./components/TypeOfPlan";
 import { TopNavigation } from './components/TopNavigation';
-import { AddOns } from './components/AddOns';
-import { Summary } from './components/Summary';
-import { ThankYou } from './components/ThankYou';
-
-const steps = [
-  {
-    id: 0,
-    title: 'Personal info',
-    description: 'Please provide your name, email address, and phone number.',
-    Component: <PersonalInfo />
-  },
-  {
-    id: 1,
-    title: 'Select your plan',
-    description: 'You have the option of monthly or yearly billing.',
-    Component: <TypeOfPlan />
-  },
-  {
-    id: 2,
-    title: 'Pick add-ons',
-    description: 'Add-ons help enhance your gaming experience.',
-    Component: <AddOns />
-  },
-  {
-    id: 3,
-    title: 'Finishing up',
-    description: 'Double-check everything looks OK before confirming.',
-    Component: <Summary />
-  },
-  {
-    id: 4,
-    Component: <ThankYou />
-  }
-]
+import { steps } from './data';
 
 function App() {
-  const [currentStep, setCurrentStep] = useState(0);
+  const [currentStepIndex, setCurrentStepIndex] = useState(0);
 
   const handleNextStep = () => {
-    setCurrentStep(currentStep + 1);
-  }
+    setCurrentStepIndex(currentStepIndex + 1);
+  };
 
   const handlePreviousStep = () => {
-    setCurrentStep(currentStep - 1);
-  }
+    setCurrentStepIndex(currentStepIndex - 1);
+  };
 
   return (
-    <div className=''>
+    <div className='md:flex md:flex-row md:bg-white md:rounded-lg md:shadow-md md:mx-auto md:w-[1000px] md:h-[700px] md:py-6'>
       {/* Sidebar / Top bar on mobile */}
-      <nav className='bg-gray-800 bg-[url("/src/assets/images/bg-sidebar-mobile.svg")] bg-cover bg-center h-[200px]'>
-        <div className='mx-auto flex justify-between items-center px-[7rem] pt-8 gap-4'>
-          <TopNavigation currentStep={currentStep} />
+      <nav className='bg-gray-800 bg-[url("/src/assets/images/bg-sidebar-mobile.svg")] bg-cover bg-center h-[200px] md:h-[650px] md:w-[400px] md:bg-[url("/src/assets/images/bg-sidebar-desktop.svg")] md:bg-cover md:bg-bottom md:ml-6 md:rounded-lg md:bg-[unset]'>
+        <div className='mx-auto flex justify-between items-center px-[7rem] pt-8 gap-4 md:flex-col md:items-start md:px-4'>
+          <TopNavigation currentStepIndex={currentStepIndex} />
         </div>
       </nav>
       {/* Content Form on mobile and desktop */}
-      <div className='mx-4'>
-        <div className='bg-white rounded-lg shadow-md p-4 mt-[-80px]'>
-          {currentStep !== 4 && (
+      <div className='mx-4 md:mx-20 md:flex-1 self-center'>
+        <div className='bg-white rounded-lg shadow-md p-4 mt-[-80px] md:mt-0 md:p-0 md:shadow-none'>
+          {currentStepIndex !== 4 && (
             <>
-              <h2 className='text-2xl font-bold text-[#04295a]'>{steps[currentStep].title}</h2>
+              <h2 className='text-2xl font-bold text-[#04295a]'>
+                {steps[currentStepIndex].title}
+              </h2>
               <p className='text-[#a2a3a9] my-4'>
-                {steps[currentStep].description}
+                {steps[currentStepIndex].description}
               </p>
             </>
           )}
-          {steps[currentStep].Component}
+          {steps[currentStepIndex].Component}
+          {/* Footer section on desktop & mobile */}
+          {currentStepIndex !== 4 && (
+            <div className='mx-4 pt-6'>
+              <div
+                className={`flex ${
+                  currentStepIndex === 0 ? 'justify-end' : 'justify-between'
+                } items-center`}
+              >
+                {currentStepIndex > 0 && currentStepIndex <= 3 && (
+                  <button
+                    className='bg-white text-gray-500 px-4 py-2 rounded-md cursor-pointer'
+                    onClick={handlePreviousStep}
+                  >
+                    Go Back
+                  </button>
+                )}
+
+                <button
+                  className={`${
+                    currentStepIndex === 3 ? 'bg-[#483eff]' : 'bg-[#04295a]'
+                  } text-white px-4 py-2 rounded-md cursor-pointer`}
+                  onClick={handleNextStep}
+                >
+                  {currentStepIndex === 3 ? 'Confirm' : 'Next Step'}
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
-      {/* Footer section on desktop & mobile */}
-      {currentStep !== 4 && (
-      <div className='mx-4'>
-        <div className='bg-white rounded-lg shadow-md p-4 mt-[10px]'>
-          <div className={`flex ${currentStep === 0 ? 'justify-end' : 'justify-between'} items-center`}>
-
-            {currentStep > 0 && currentStep <= 3 && (
-              <button className='bg-white text-gray-500 px-4 py-2 rounded-md' onClick={handlePreviousStep}>Go Back</button>
-            )}
-            
-              <button className={`${currentStep === 3 ? 'bg-[#483eff]' : 'bg-[#04295a]'} text-white px-4 py-2 rounded-md`} onClick={handleNextStep}>{currentStep === 3 ? 'Confirm' : 'Next Step'}</button>
-           
-          </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
