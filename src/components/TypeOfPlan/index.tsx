@@ -37,7 +37,7 @@ export const TypeOfPlan = () => {
       <button
         className={`flex flex-col gap-2 border rounded-lg p-4 ${
           selectedPlan === plan.id
-            ? 'border-2 border-[#7973cb] bg-[#f7f9ff]'
+            ? 'border-2 border-[#483eff] bg-[#f7f9ff]'
             : 'border-[#e4e3e9]'
         }`}
         key={plan.id}

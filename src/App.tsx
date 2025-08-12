@@ -4,6 +4,8 @@ import { PersonalInfo } from "./components/PersonalInfo";
 import { TypeOfPlan } from "./components/TypeOfPlan";
 import { TopNavigation } from './components/TopNavigation';
 import { AddOns } from './components/AddOns';
+import { Summary } from './components/Summary';
+import { ThankYou } from './components/ThankYou';
 
 const steps = [
   {
@@ -23,6 +25,16 @@ const steps = [
     title: 'Pick add-ons',
     description: 'Add-ons help enhance your gaming experience.',
     Component: <AddOns />
+  },
+  {
+    id: 3,
+    title: 'Finishing up',
+    description: 'Double-check everything looks OK before confirming.',
+    Component: <Summary />
+  },
+  {
+    id: 4,
+    Component: <ThankYou />
   }
 ]
 
@@ -48,14 +60,19 @@ function App() {
       {/* Content Form on mobile and desktop */}
       <div className='mx-4'>
         <div className='bg-white rounded-lg shadow-md p-4 mt-[-80px]'>
-          <h2 className='text-2xl font-bold text-[#04295a]'>{steps[currentStep].title}</h2>
-          <p className='text-[#a2a3a9] my-4'>
-            {steps[currentStep].description}
-          </p>
+          {currentStep !== 4 && (
+            <>
+              <h2 className='text-2xl font-bold text-[#04295a]'>{steps[currentStep].title}</h2>
+              <p className='text-[#a2a3a9] my-4'>
+                {steps[currentStep].description}
+              </p>
+            </>
+          )}
           {steps[currentStep].Component}
         </div>
       </div>
       {/* Footer section on desktop & mobile */}
+      {currentStep !== 4 && (
       <div className='mx-4'>
         <div className='bg-white rounded-lg shadow-md p-4 mt-[10px]'>
           <div className={`flex ${currentStep === 0 ? 'justify-end' : 'justify-between'} items-center`}>
@@ -63,11 +80,13 @@ function App() {
             {currentStep > 0 && currentStep <= 3 && (
               <button className='bg-white text-gray-500 px-4 py-2 rounded-md' onClick={handlePreviousStep}>Go Back</button>
             )}
-
-            <button className='bg-[#04295a] text-white px-4 py-2 rounded-md' onClick={handleNextStep}>{currentStep === 3 ? 'Confirm' : 'Next Step'}</button>
+            
+              <button className={`${currentStep === 3 ? 'bg-[#483eff]' : 'bg-[#04295a]'} text-white px-4 py-2 rounded-md`} onClick={handleNextStep}>{currentStep === 3 ? 'Confirm' : 'Next Step'}</button>
+           
+          </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

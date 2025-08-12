@@ -46,7 +46,7 @@ export const AddOns = () => {
       <div
         className={`relative border ${
           isSelected
-            ? 'border-2 border-[#7973cb] bg-[#f7f9ff]'
+            ? 'border-2 border-[#483eff] bg-[#f7f9ff]'
             : 'border-[#e4e3e9]'
         } rounded-lg p-3 my-4`}
         key={addOn.id}
@@ -65,7 +65,7 @@ export const AddOns = () => {
               htmlFor={addOn.slug}
               className={`flex items-center justify-center w-5 h-5 rounded border-2 cursor-pointer transition-colors ${
                 isSelected 
-                  ? 'bg-[#7973cb] border-[#7973cb]'
+                  ? 'bg-[#483eff] border-[#483eff]'
                   : 'border-gray-300 bg-white'
               }`}>
               <img
@@ -91,7 +91,7 @@ export const AddOns = () => {
           </div>
           <p
             id={`addon-price-${addOn.id}`}
-            className='flex-1 text-right mr-2 text-sm text-[#7973cb]'>
+            className='flex-1 text-right mr-2 text-sm text-[#483eff]'>
             +${addOn.monthlyPrice}/mo
           </p>
         </div>
