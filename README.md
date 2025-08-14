@@ -1,69 +1,104 @@
-# React + TypeScript + Vite
+# Multi-Step Form
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive multi-step form application built with React and TypeScript, featuring a modern UI design with step-by-step navigation for collecting user information, plan selection, add-ons, and order summary.
 
-Currently, two official plugins are available:
+## 🚀 Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project is a comprehensive multi-step form that guides users through a subscription signup process. It includes:
 
-## Expanding the ESLint configuration
+- **Step 1: Personal Info** - Collect user's name, email, and phone number with real-time validation
+- **Step 2: Select Plan** - Choose between different subscription plans (Arcade, Advanced, Pro) with monthly/yearly billing toggle
+- **Step 3: Add-ons** - Select optional add-ons to enhance the subscription
+- **Step 4: Summary** - Review all selections before confirmation
+- **Step 5: Thank You** - Confirmation page after successful submission
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Technologies Used
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Core Technologies
+- **React 19.1.0** - Modern React with latest features
+- **TypeScript 5.8.3** - Type-safe JavaScript development
+- **Vite 7.0.4** - Fast build tool and development server
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### Styling & UI
+- **Tailwind CSS 4.1.11** - Utility-first CSS framework for rapid UI development
+- **Custom SVG Assets** - Background images and icons for enhanced visual design
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Development Tools
+- **ESLint 9.30.1** - Code linting and quality enforcement
+- **TypeScript ESLint 8.35.1** - TypeScript-specific linting rules
+- **React Hooks ESLint Plugin** - React hooks best practices
+
+### Build & Development
+- **Vite React Plugin 4.6.0** - React support for Vite
+- **TypeScript Compiler** - Type checking and compilation
+
+## ✨ Key Features
+
+- **Responsive Design** - Optimized for both mobile and desktop experiences
+- **Form Validation** - Real-time validation with user-friendly error messages
+- **State Management** - Efficient form state handling across multiple steps
+- **Accessibility** - WCAG compliant with proper ARIA labels and keyboard navigation
+- **Modern UI** - Clean, professional design with smooth transitions
+- **Type Safety** - Full TypeScript implementation for robust development
+
+## 🎨 Design Highlights
+
+- **Mobile-First Approach** - Horizontal step navigation on mobile, sidebar navigation on desktop
+- **Interactive Elements** - Custom styled checkboxes, toggles, and form controls
+- **Visual Feedback** - Clear indication of current step and form validation states
+- **Consistent Theming** - Cohesive color scheme and typography throughout
+
+## 📱 Responsive Behavior
+
+- **Mobile (< 768px)**: Horizontal step indicators at the top, stacked form layout
+- **Desktop (≥ 768px)**: Vertical sidebar with step details, side-by-side layout with form content
+
+## 🚦 Getting Started
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+
+# Run linting
+npm run lint
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📁 Project Structure
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+src/
+├── components/           # Reusable React components
+│   ├── PersonalInfo/    # Step 1 component
+│   ├── TypeOfPlan/      # Step 2 component
+│   ├── AddOns/          # Step 3 component
+│   ├── Summary/         # Step 4 component
+│   ├── ThankYou/        # Step 5 component
+│   └── TopNavigation/   # Navigation component
+├── assets/              # Static assets (images, icons)
+├── data/                # Application data and configuration
+└── App.tsx              # Main application component
+```
+
+## 🎯 Learning Objectives
+
+This project demonstrates:
+- Multi-step form implementation patterns
+- State management across components
+- Form validation techniques
+- Responsive design with Tailwind CSS
+- TypeScript integration in React applications
+- Modern React development practices
+- Accessibility considerations in web forms
+
+---
+
+Built with ❤️ by [HawiCaesar](https://github.com/HawiCaesar)
