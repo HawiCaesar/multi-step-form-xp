@@ -1,0 +1,17 @@
+- Go to https://multi-step-form-ten-jet.vercel.app/
+- Click on the "Next Step" button
+- View the error on the page
+- Fill in the personal info form
+    - Fill in the name field with "Brian Hawi"
+    - Fill in the email field with "abc@gmail.com"
+    - Fill in the phone number field with "+254727044333"
+    - Click on the "Next Step" button
+- Click on the "Pro" heading button
+- Click on the "Next Step" button
+- Click on the "Online service" checkbox
+- Click on the "Larger storage" checkbox
+- Click on the "Next Step" button
+- View the total price monthly. Confirm the price is $18
+- Click on the "Confirm" button
+- You should see the "Thank you" page
+- Take screenshot of this page

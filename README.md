@@ -102,6 +102,10 @@ This project demonstrates:
 - Modern React development practices
 - Accessibility considerations in web forms
 
+### Automated tests
+- configured an automated test with Stagehand
+- used a README marked found at /automated-test/MULTI-STEP-FORM_monthly
+
 ---
 
 Built with ❤️ by [HawiCaesar](https://github.com/HawiCaesar)

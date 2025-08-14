@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+automated-tests/.env
+automated-tests/node_modules
+automated-tests/tmp
+automated-tests/downloads
+automated-tests/.DS_Store
+automated-tests/dist
+automated-tests/cache.json
