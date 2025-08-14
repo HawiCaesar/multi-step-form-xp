@@ -4,6 +4,10 @@ import { AddOns } from '../components/AddOns';
 import { Summary } from '../components/Summary';
 import { ThankYou } from '../components/ThankYou';
 
+import iconArcade from '../assets/images/icon-arcade.svg';
+import iconAdvanced from '../assets/images/icon-advanced.svg';
+import iconPro from '../assets/images/icon-pro.svg';
+
 export const steps = [
   {
     id: 0,
@@ -45,21 +49,21 @@ export const plans = [
     name: 'Arcade',
     monthlyPrice: 9,
     yearlyPrice: 90,
-    icon: '/src/assets/images/icon-arcade.svg'
+    icon: iconArcade
   },
   {
     id: 2,
     name: 'Advanced',
     monthlyPrice: 12,
     yearlyPrice: 120,
-    icon: '/src/assets/images/icon-advanced.svg'
+    icon: iconAdvanced
   },
   {
     id: 3,
     name: 'Pro',
     monthlyPrice: 15,
     yearlyPrice: 150,
-    icon: '/src/assets/images/icon-pro.svg'
+    icon: iconPro
   }
 ];
 
