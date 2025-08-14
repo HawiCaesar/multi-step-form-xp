@@ -80,7 +80,7 @@ function App() {
   };
 
   const onAddOnsChange = (addOns: number[]) => {
-    setFormData({ ...formData, userSelectedAddOns: [...formData.userSelectedAddOns, ...addOns] });
+    setFormData({ ...formData, userSelectedAddOns: [...addOns] });
   };
 
   const renderCurrentStepComponent = () => {

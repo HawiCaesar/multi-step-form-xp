@@ -2,6 +2,11 @@
 
 A responsive multi-step form application built with React and TypeScript, featuring a modern UI design with step-by-step navigation for collecting user information, plan selection, add-ons, and order summary.
 
+<img src="./multi-form-step-1.png" alt="Multi-Step-Form-Desktop" />
+<img src="./multi-form-step-2.png" alt="Multi-Step-Form-Desktop-another-image" />
+<img src="./multi-step-form-mobile-1.png" alt="Multi-step-form-mobile" />
+<img src="./multi-step-form-mobile-2.png" alt="Multi-step-form-mobile-another-image" />
+
 ## 🚀 Project Overview
 
 This project is a comprehensive multi-step form that guides users through a subscription signup process. It includes:
