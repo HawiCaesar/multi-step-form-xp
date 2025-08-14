@@ -1,23 +1,26 @@
-export const Summary = () => {
-  const stepSummary = [
-    {
-      type: 'monthly',
-      plan: {
-        name: 'Arcade',
-        price: 9
-      },
-      addOns: [
-        {
-          name: 'Online service',
-          price: 1
-        },
-        {
-          name: 'Larger storage',
-          price: 2
-        }
-      ]
-    }
-  ];
+import { addOns, plans } from '../../data';
+
+type SummaryProps = {
+  setCurrentStepIndex: (index: number) => void;
+  formData: {
+    planId: number;
+    isMonthly: boolean;
+    userSelectedAddOns: number[];
+  };
+};
+
+export const Summary = ({ setCurrentStepIndex, formData }: SummaryProps) => {
+  const { planId, isMonthly, userSelectedAddOns } = formData;
+
+  const plan = plans.find((plan) => plan.id === planId);
+  const selectedAddOns = addOns.filter((addOn) =>
+    userSelectedAddOns.includes(addOn.id)
+  );
+
+  const planPrice = isMonthly ? plan?.monthlyPrice ?? 0 : plan?.yearlyPrice ?? 0;
+  const addOnsPrice = selectedAddOns.reduce((acc, addOn) => acc + (isMonthly ? addOn.monthlyPrice : addOn.yearlyPrice), 0);
+
+  const totalPrice = planPrice + addOnsPrice;
 
   return (
     <div className='flex flex-col gap-4'>
@@ -25,25 +28,31 @@ export const Summary = () => {
         <div className='flex justify-between border-b border-gray-200 pb-4'>
           <div className='flex flex-col'>
             <h3 className='text-[#04295a] font-bold'>
-              {stepSummary[0].plan.name} (
-              {stepSummary[0].type === 'monthly' ? 'Monthly' : 'Yearly'})
+              {plan?.name} (
+              {isMonthly ? 'Monthly' : 'Yearly'})
             </h3>
-            <a href='/' className='text-[#a2a3a9] underline'>
+            <a
+              href='#'
+              className='text-[#a2a3a9] underline'
+              onClick={() => {
+                setCurrentStepIndex(1);
+              }}
+            >
               Change
             </a>
           </div>
           <p className='text-[#04295a] font-bold self-center'>
-            ${stepSummary[0].plan.price}/
-            {stepSummary[0].type === 'monthly' ? 'mo' : 'yr'}
+            ${planPrice}/
+            {isMonthly ? 'mo' : 'yr'}
           </p>
         </div>
         <div className='flex flex-col gap-2'>
-          {stepSummary[0].addOns.map((addOn, index) => (
+          {selectedAddOns.map((addOn, index) => (
             <div className='flex justify-between text-[#a2a3a9]' key={index}>
               <p>{addOn.name}</p>
               <p className='text-[#04295a]'>
-                +${addOn.price}/
-                {stepSummary[0].type === 'monthly' ? 'mo' : 'yr'}
+                +${isMonthly ? addOn.monthlyPrice : addOn.yearlyPrice}/
+                {isMonthly ? 'mo' : 'yr'}
               </p>
             </div>
           ))}
@@ -51,13 +60,12 @@ export const Summary = () => {
       </div>
       <div className='flex justify-between text-[#a2a3a9] mx-6 py-4'>
         <p>
-          Total (per {stepSummary[0].type === 'monthly' ? 'month' : 'year'})
+          Total (per {isMonthly ? 'month' : 'year'})
         </p>
         <p className='text-[#483eff] font-bold'>
           +$
-          {stepSummary[0].plan.price +
-            stepSummary[0].addOns.reduce((acc, addOn) => acc + addOn.price, 0)}
-          /{stepSummary[0].type === 'monthly' ? 'mo' : 'yr'}
+          {totalPrice}/
+          {isMonthly ? 'mo' : 'yr'}
         </p>
       </div>
     </div>

@@ -11,7 +11,7 @@ function App() {
     phone: '',
     planId: 0,
     isMonthly: true,
-    addOns: [] as number[]
+    userSelectedAddOns: [] as number[]
   });
 
   const [errors, setErrors] = useState({
@@ -80,7 +80,7 @@ function App() {
   };
 
   const onAddOnsChange = (addOns: number[]) => {
-    setFormData({ ...formData, addOns: [...formData.addOns, ...addOns] });
+    setFormData({ ...formData, userSelectedAddOns: [...formData.userSelectedAddOns, ...addOns] });
   };
 
   const renderCurrentStepComponent = () => {
@@ -92,12 +92,13 @@ function App() {
         onInputChange={handleInputChange}
         formData={formData}
         errors={errors}
+        setCurrentStepIndex={setCurrentStepIndex}
       />
     );
   };
 
   return (
-    <div className='md:flex md:flex-row md:bg-white md:rounded-lg md:shadow-md md:mx-auto md:w-[1000px] md:h-[700px] md:py-6'>
+    <div className='md:flex md:flex-row md:bg-white md:rounded-lg md:shadow-md md:mx-auto md:w-[1000px] md:h-[700px] md:py-6 md:mt-[130px]'>
       {/* Sidebar / Top bar on mobile */}
       <nav className='bg-gray-800 bg-[url("/src/assets/images/bg-sidebar-mobile.svg")] bg-cover bg-center h-[200px] md:h-[650px] md:w-[300px] md:bg-[url("/src/assets/images/bg-sidebar-desktop.svg")] md:bg-cover md:bg-bottom md:ml-6 md:rounded-lg md:bg-[unset]'>
         <div className='mx-auto flex justify-between items-center px-[7rem] pt-8 gap-4 md:flex-col md:items-start md:px-4'>
@@ -142,7 +143,7 @@ function App() {
                       currentStepIndex === 3 ? 'bg-[#483eff]' : 'bg-[#04295a]'
                     } text-white px-4 py-2 rounded-md cursor-pointer`}
                     onClick={handleNextStep}
-                    type={currentStepIndex === 3 ? 'submit' : 'button'}
+                    type={currentStepIndex === 4 ? 'submit' : 'button'}
                   >
                     {currentStepIndex === 3 ? 'Confirm' : 'Next Step'}
                   </button>

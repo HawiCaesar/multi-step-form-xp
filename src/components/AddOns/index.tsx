@@ -5,12 +5,13 @@ import { addOns } from '../../data';
 type AddOnsProps = {
   onAddOnsChange?: (addOns: number[]) => void;
   formData?: {
-    addOns: number[];
+    userSelectedAddOns: number[];
+    isMonthly: boolean;
   };
 }
 
 export const AddOns = ({ onAddOnsChange, formData }: AddOnsProps) => {
-  const [selectedAddOns, setSelectedAddOns] = useState<number[]>(formData?.addOns ?? []);
+  const [selectedAddOns, setSelectedAddOns] = useState<number[]>(formData?.userSelectedAddOns ?? []);
 
   const handleAddOnSelection = (addOnId: number) => {
     setSelectedAddOns([...selectedAddOns, addOnId]);
@@ -27,7 +28,7 @@ export const AddOns = ({ onAddOnsChange, formData }: AddOnsProps) => {
 
     return (
       <div
-        className={`relative border ${
+        className={`relative border hover:border-[#483eff] ${
           isSelected
             ? 'border-2 border-[#483eff] bg-[#f7f9ff]'
             : 'border-[#e4e3e9]'
@@ -75,7 +76,7 @@ export const AddOns = ({ onAddOnsChange, formData }: AddOnsProps) => {
           <p
             id={`addon-price-${addOn.id}`}
             className='flex-1 text-right mr-2 text-sm text-[#483eff]'>
-            +${addOn.monthlyPrice}/mo
+            +${formData?.isMonthly ? `${addOn.monthlyPrice}/mo` : `${addOn.yearlyPrice}/yr`}
           </p>
         </div>
       </div>

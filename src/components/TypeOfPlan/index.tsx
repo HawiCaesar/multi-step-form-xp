@@ -18,7 +18,7 @@ export const TypeOfPlan = ({ onTypeOfPlanChange, formData }: TypeOfPlanProps) =>
       <div className='flex flex-col md:flex-row gap-2 md:gap-4'>
         {plans.map((plan) => (
           <button
-            className={`md:flex-row md:flex-wrap border rounded-lg p-4 ${
+            className={`md:flex-row md:flex-wrap border hover:border-[#483eff] rounded-lg p-4 ${
               selectedPlan === plan.id
                 ? 'border-2 border-[#483eff] bg-[#f7f9ff]'
                 : 'border-[#e4e3e9]'
