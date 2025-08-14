@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 import { TopNavigation } from './components/TopNavigation';
 import { steps } from './data';
@@ -153,6 +154,7 @@ function App() {
           </div>
         </form>
       </div>
+      <SpeedInsights />
     </div>
   );
 }
