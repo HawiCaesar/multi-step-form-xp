@@ -1,36 +1,17 @@
 import { useState } from 'react';
+import { plans } from '../../data';
 
-export const TypeOfPlan = () => {
-  const [selectedPlan, setSelectedPlan] = useState<number>(1);
-  const [isMonthly, setIsMonthly] = useState(true);
+type TypeOfPlanProps = {
+  onTypeOfPlanChange?: (planId: number, isMonthly: boolean) => void;
+  formData?: {
+    planId: number;
+    isMonthly: boolean;
+  };
+}
 
-  // const handlePlanSelection = (plan: string) => {
-  //   setSelectedPlan(plan);
-  // }
-
-  const plans = [
-    {
-      id: 1,
-      name: 'Arcade',
-      monthlyPrice: 9,
-      yearlyPrice: 90,
-      icon: '/src/assets/images/icon-arcade.svg'
-    },
-    {
-      id: 2,
-      name: 'Advanced',
-      monthlyPrice: 12,
-      yearlyPrice: 120,
-      icon: '/src/assets/images/icon-advanced.svg'
-    },
-    {
-      id: 3,
-      name: 'Pro',
-      monthlyPrice: 15,
-      yearlyPrice: 150,
-      icon: '/src/assets/images/icon-pro.svg'
-    }
-  ];
+export const TypeOfPlan = ({ onTypeOfPlanChange, formData }: TypeOfPlanProps) => {
+  const [selectedPlan, setSelectedPlan] = useState<number>(formData?.planId || 1);
+  const [isMonthly, setIsMonthly] = useState<boolean>(formData?.isMonthly ?? true);
 
   const RenderPlans = () => {
     return (
@@ -46,6 +27,7 @@ export const TypeOfPlan = () => {
             onClick={(e) => {
               e.preventDefault();
               setSelectedPlan(plan.id);
+              onTypeOfPlanChange?.(plan.id, isMonthly);
             }}
             aria-pressed={selectedPlan === plan.id}
             aria-label={`Select ${plan.name} plan`}
@@ -60,7 +42,7 @@ export const TypeOfPlan = () => {
               <div className='flex flex-col gap'>
                 <h3 className='text-lg font-bold text-left'>{plan.name}</h3>
                 <p className='text-sm text-[#a2a3a9] text-left'>
-                  ${isMonthly ? plan.monthlyPrice : plan.yearlyPrice}/mo
+                  ${isMonthly ? `${plan.monthlyPrice}/mo` : `${plan.yearlyPrice}/yr`}
                 </p>
                 {!isMonthly && (
                   <p className='text-sm text-[#a2a3a9] md:text-[#04295a]'>2 months free</p>
@@ -89,9 +71,13 @@ export const TypeOfPlan = () => {
 
           {/* Toggle Switch */}
           <button
-            onClick={() => setIsMonthly(!isMonthly)}
-            className={`relative inline-flex h-7 w-12 items-center rounded-full transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-sm ${'bg-slate-700'}`}
+            onClick={() => {
+              setIsMonthly(!isMonthly);
+              onTypeOfPlanChange?.(selectedPlan, !isMonthly);
+            }}
+            className={`relative inline-flex h-7 w-12 items-center rounded-full transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-sm ${'bg-slate-700'} cursor-pointer`}
             aria-label='Toggle between monthly and yearly pricing'
+            type='button'
           >
             {/* Toggle Circle */}
             <span

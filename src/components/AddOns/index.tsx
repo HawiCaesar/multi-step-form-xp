@@ -1,43 +1,26 @@
 import { useState } from 'react';
 import checkIcon from '../../assets/images/icon-checkmark.svg';
+import { addOns } from '../../data';
 
-export const AddOns = () => {
-  const [selectedAddOns, setSelectedAddOns] = useState<number[]>([]);
+type AddOnsProps = {
+  onAddOnsChange?: (addOns: number[]) => void;
+  formData?: {
+    addOns: number[];
+  };
+}
+
+export const AddOns = ({ onAddOnsChange, formData }: AddOnsProps) => {
+  const [selectedAddOns, setSelectedAddOns] = useState<number[]>(formData?.addOns ?? []);
 
   const handleAddOnSelection = (addOnId: number) => {
     setSelectedAddOns([...selectedAddOns, addOnId]);
+    onAddOnsChange?.([...selectedAddOns, addOnId]);
   };
 
   const handleAddOnDeselection = (addOnId: number) => {
     setSelectedAddOns(selectedAddOns.filter((id) => id !== addOnId));
+    onAddOnsChange?.(selectedAddOns.filter((id) => id !== addOnId));
   };
-
-  const addOns = [
-    {
-      id: 1,
-      name: 'Online service',
-      slug: 'online-service',
-      description: 'Access to multiplayer games',
-      monthlyPrice: 1,
-      yearlyPrice: 10
-    },
-    {
-      id: 2,
-      name: 'Larger storage',
-      slug: 'larger-storage',
-      description: 'Extra 1TB of cloud save',
-      monthlyPrice: 2,
-      yearlyPrice: 20
-    },
-    {
-      id: 3,
-      name: 'Customizable profile',
-      slug: 'customizable-profile',
-      description: 'Custom theme on your profile',
-      monthlyPrice: 2,
-      yearlyPrice: 20
-    }
-  ];
 
   return addOns.map((addOn) => {
     const isSelected = selectedAddOns.includes(addOn.id);
