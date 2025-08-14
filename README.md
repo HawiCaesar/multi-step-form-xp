@@ -4,8 +4,6 @@ A responsive multi-step form application built with React and TypeScript, featur
 
 <img src="./multi-form-step-1.png" alt="Multi-Step-Form-Desktop" />
 <img src="./multi-form-step-2.png" alt="Multi-Step-Form-Desktop-another-image" />
-<img src="./multi-step-form-mobile-1.png" alt="Multi-step-form-mobile" />
-<img src="./multi-step-form-mobile-2.png" alt="Multi-step-form-mobile-another-image" />
 
 ## 🚀 Project Overview
 
