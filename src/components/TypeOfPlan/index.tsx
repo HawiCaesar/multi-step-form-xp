@@ -33,36 +33,44 @@ export const TypeOfPlan = () => {
   ];
 
   const RenderPlans = () => {
-    return plans.map((plan) => (
-      <button
-        className={`flex flex-col gap-2 border rounded-lg p-4 ${
-          selectedPlan === plan.id
-            ? 'border-2 border-[#483eff] bg-[#f7f9ff]'
-            : 'border-[#e4e3e9]'
-        } cursor-pointer`}
-        key={plan.id}
-        onClick={(e) => {
-          e.preventDefault();
-          setSelectedPlan(plan.id);
-        }}
-        aria-pressed={selectedPlan === plan.id}
-        aria-label={`Select ${plan.name} plan`}
-        type='button'
-      >
-        <div className='flex items-start gap-2'>
-          <img src={plan.icon} alt='arcade' className='mt-1' />
-          <div className='flex flex-col gap'>
-            <h3 className='text-lg font-bold text-left'>{plan.name}</h3>
-            <p className='text-sm text-[#a2a3a9] text-left'>
-              ${isMonthly ? plan.monthlyPrice : plan.yearlyPrice}/mo
-            </p>
-            {!isMonthly && (
-              <p className='text-sm text-[#a2a3a9]'>2 months free</p>
-            )}
-          </div>
-        </div>
-      </button>
-    ));
+    return (
+      <div className='flex flex-col md:flex-row gap-2 md:gap-4'>
+        {plans.map((plan) => (
+          <button
+            className={`md:flex-row md:flex-wrap border rounded-lg p-4 ${
+              selectedPlan === plan.id
+                ? 'border-2 border-[#483eff] bg-[#f7f9ff]'
+                : 'border-[#e4e3e9]'
+            } cursor-pointer`}
+            key={plan.id}
+            onClick={(e) => {
+              e.preventDefault();
+              setSelectedPlan(plan.id);
+            }}
+            aria-pressed={selectedPlan === plan.id}
+            aria-label={`Select ${plan.name} plan`}
+            type='button'
+          >
+            <div className='flex items-start gap-2 md:gap-10 md:flex-col md:w-[100px]'>
+              <img
+                src={plan.icon}
+                alt={`${plan.name} icon`}
+                className='mt-1'
+              />
+              <div className='flex flex-col gap'>
+                <h3 className='text-lg font-bold text-left'>{plan.name}</h3>
+                <p className='text-sm text-[#a2a3a9] text-left'>
+                  ${isMonthly ? plan.monthlyPrice : plan.yearlyPrice}/mo
+                </p>
+                {!isMonthly && (
+                  <p className='text-sm text-[#a2a3a9] md:text-[#04295a]'>2 months free</p>
+                )}
+              </div>
+            </div>
+          </button>
+        ))}
+      </div>
+    );
   };
 
   return (
@@ -82,9 +90,7 @@ export const TypeOfPlan = () => {
           {/* Toggle Switch */}
           <button
             onClick={() => setIsMonthly(!isMonthly)}
-            className={`relative inline-flex h-7 w-12 items-center rounded-full transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-sm ${
-              'bg-slate-700' 
-            }`}
+            className={`relative inline-flex h-7 w-12 items-center rounded-full transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-sm ${'bg-slate-700'}`}
             aria-label='Toggle between monthly and yearly pricing'
           >
             {/* Toggle Circle */}
