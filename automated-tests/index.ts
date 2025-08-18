@@ -99,6 +99,9 @@ async function main({
   // Step 10: Click Confirm button
   console.log("✅ Confirming the order...");
   await page.act({ action: "click the 'Confirm' button" });
+
+  // wait for 5 seconds
+  await page.waitForTimeout(3000);
   
   // Step 11: Verify Thank You page and take screenshot
   console.log("🎉 Verifying Thank You page...");
@@ -107,6 +110,9 @@ async function main({
   // Take screenshot of the Thank You page
   console.log("📸 Taking screenshot of Thank You page...");
   await page.screenshot({ path: "thank-you-page.png", fullPage: true });
+
+  // wait for 5 seconds
+  await page.waitForTimeout(5000);
   
   console.log("🎯 Multi-Step Form test completed successfully!");
 }

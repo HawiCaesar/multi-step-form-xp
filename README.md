@@ -103,9 +103,9 @@ This project demonstrates:
 - Accessibility considerations in web forms
 
 ### Automated tests
-- configured an automated test with Stagehand
+- configured an automated test with Stagehand and BrowserBase
 - used a README marked found at /automated-test/MULTI-STEP-FORM_monthly
-
+- Check out this [video of BrowserBase](https://drive.google.com/file/d/1oYgPnLp5il3cHj5ZoVHrb3KXuvihZOKh/view?usp=sharing) running with this project automatically
 ---
 
 Built with ❤️ by [HawiCaesar](https://github.com/HawiCaesar)
